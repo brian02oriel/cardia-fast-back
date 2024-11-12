@@ -1,15 +1,20 @@
-from typing import Union
+from fastapi import FastAPI, Body, Path, Query
+from fastapi.responses import HTMLResponse
+from routers.user import user_router
+from routers.diagnostic import diagnostic_router
+from routers.settings import settings_router
 
-from fastapi import FastAPI
+import TAGS
 
 app = FastAPI()
+app.title = 'Cardia Fast API'
+app.version = '0.0.1'
+
+app.include_router(user_router)
+app.include_router(diagnostic_router)
+app.include_router(settings_router)
 
 
-@app.get("/")
+@app.get('/', tags=TAGS['HOME'])
 def read_root():
-    return {"Hello": "World"}
-
-
-@app.get("/items/{item_id}")
-def read_item(item_id: int, q: Union[str, None] = None):
-    return {"item_id": item_id, "q": q}
+    return {'Hello': 'World'}
