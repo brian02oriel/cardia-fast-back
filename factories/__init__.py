@@ -1,0 +1,2 @@
+from Diagnosis import Diagnosis
+from DiagnosisFactory import DiagnosisFactory, IAMDiagnosisFactory, EPADiagnosisFactory
