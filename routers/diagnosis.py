@@ -1,6 +1,7 @@
 from fastapi import APIRouter
 import TAGS
-from factories.DiagnosisFactory import EPADiagnosisFactory, IAMDiagnosisFactory
+from factory.implementations.diagnosis import perform_diagnosis
+from factory.interfaces.DiagnosisInterface import EPADiagnosisFactory, IAMDiagnosisFactory
 
 
 diagnosis_router = APIRouter
@@ -9,8 +10,10 @@ diagnosis_router = APIRouter
 @diagnosis_router.post('/diagnosis', tags=TAGS['DIAGNOSIS'])
 def create():
     # TODO: Calculate new diagnosis
-    iam = IAMDiagnosisFactory().create_diagnosis().make_diagnosis()
-    epa = EPADiagnosisFactory().create_diagnosis().make_diagnosis()
+    iam_factory = IAMDiagnosisFactory()
+    print(perform_diagnosis(iam_factory))
+    epa_factory = EPADiagnosisFactory()
+    print(perform_diagnosis(epa_factory))
     # TODO: Save patient and diagnosis
     return ''
 

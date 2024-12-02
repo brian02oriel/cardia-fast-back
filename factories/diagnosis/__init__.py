@@ -1,2 +1,0 @@
-from IAMDiagnosis import IAMDiagnosis
-from EPADiagnosis import EPADiagnosis
