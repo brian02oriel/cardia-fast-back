@@ -1,21 +1,20 @@
 # Create a manifest with every risk factor applied into diagnose calculation
+from pydantic import BaseModel
 
-from typing import Protocol, List, TypedDict
-
-class Rules(TypedDict):
+class Rules(BaseModel):
     count: int
     percentage: float
 
-class Factors(TypedDict):
+class Factors(BaseModel):
     code: str
     points: int
 
-class Props(Protocol):
+class Props(BaseModel):
     name: str
-    factors: List[Factors]
-    rules: List[Rules]
+    factors: list[Factors]
+    rules: list[Rules]
 
-class Diseases(Protocol):
+class Diseases(BaseModel):
     IAM: Props
 
 

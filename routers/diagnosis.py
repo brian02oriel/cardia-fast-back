@@ -1,19 +1,19 @@
 from fastapi import APIRouter
-import TAGS
+from TAGS import TAGS
+from factory.creators import EPAFactory, IAMFactory
 from factory.implementations.diagnosis import perform_diagnosis
-from factory.interfaces.DiagnosisInterface import EPADiagnosisFactory, IAMDiagnosisFactory
+from factory.interfaces.DiagnosisInterface import CustomSelectOption
 
-
-diagnosis_router = APIRouter
+diagnosis_router = APIRouter()
 
 # Register Entity
 @diagnosis_router.post('/diagnosis', tags=TAGS['DIAGNOSIS'])
-def create():
-    # TODO: Calculate new diagnosis
-    iam_factory = IAMDiagnosisFactory()
+def create(options: list[CustomSelectOption]):
+    iam_factory = IAMFactory(options)
     print(perform_diagnosis(iam_factory))
-    epa_factory = EPADiagnosisFactory()
+    epa_factory = EPAFactory(options)
     print(perform_diagnosis(epa_factory))
+
     # TODO: Save patient and diagnosis
     return ''
 

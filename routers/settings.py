@@ -1,7 +1,6 @@
 from fastapi import APIRouter
-import TAGS
-
-settings_router = APIRouter
+from TAGS import TAGS
+settings_router = APIRouter()
 
 # Settings Entity
 @settings_router.post('/settings', tags=TAGS['SETTINGS'])

@@ -1,7 +1,7 @@
 from fastapi import APIRouter
-import TAGS
+from TAGS import TAGS
 
-user_router = APIRouter
+user_router = APIRouter()
 
 # User Entity
 @user_router.post('/user', tags=TAGS['USER'])

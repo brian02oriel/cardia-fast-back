@@ -1,7 +1,8 @@
-from factory.interfaces.DiagnosisInterface import DiagnosisFactory, Diagnosis
-from factory.products import IAMDiagnosis
+
+from factory.interfaces.DiagnosisInterface import Diagnosis, DiagnosisFactory, Fields
+from factory.products.IAMDiagnosis import IAMDiagnosis
 
 
-class EPAFactory(DiagnosisFactory):
-    def create_diagnosis(self) -> Diagnosis:
-        return IAMDiagnosis()
+class IAMFactory(DiagnosisFactory):
+    def create_diagnosis(self, options: Fields) -> Diagnosis:
+        return IAMDiagnosis(options)

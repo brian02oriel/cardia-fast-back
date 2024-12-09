@@ -1,6 +1,8 @@
-from factory.interfaces.DiagnosisInterface import Diagnosis
+from ..interfaces.DiagnosisInterface import Diagnosis, Fields
 
 
 class IAMDiagnosis(Diagnosis):
-    def make_diagnosis(self)-> float:
+    code: str = 'IAM'
+    def make_diagnosis(self, options: Fields)-> float:
+        print('IAM: ', options)
         return 1.0
