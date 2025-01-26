@@ -12,8 +12,10 @@ diagnosis_router = APIRouter()
 @diagnosis_router.post('/diagnosis', tags=TAGS['DIAGNOSIS'])
 def create(options: Options):
     iam_factory = IAMFactory()
+    epa_factory = EPAFactory()
     res = {
-        "IAM": perform_diagnosis(iam_factory, options)
+        "IAM": perform_diagnosis(factory=iam_factory, options=options),
+        "EPA": perform_diagnosis(factory=epa_factory, options=options)
     }
     return JSONResponse(res, status_code=200) 
 
