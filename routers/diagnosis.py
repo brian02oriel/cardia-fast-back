@@ -9,7 +9,7 @@ from factory.interfaces.DiagnosisInterface import Options
 diagnosis_router = APIRouter()
 
 # Register Entity
-@diagnosis_router.post('/diagnosis', tags=TAGS['DIAGNOSIS'])
+@diagnosis_router.post('/api/diagnosis', tags=TAGS['DIAGNOSIS'])
 def create(options: Options):
     iam_factory = IAMFactory()
     epa_factory = EPAFactory()
@@ -19,13 +19,13 @@ def create(options: Options):
     }
     return JSONResponse(res, status_code=200) 
 
-@diagnosis_router.get('/diagnosis', tags=TAGS['DIAGNOSIS'])
+@diagnosis_router.get('/api/diagnosis', tags=TAGS['DIAGNOSIS'])
 def get():
     # Pass filters as params
     # TODO: Get every register
     return ''
 
-@diagnosis_router.delete('/diagnosis', tags=TAGS['DIAGNOSIS'])
+@diagnosis_router.delete('/api/diagnosis', tags=TAGS['DIAGNOSIS'])
 def delete():
     # TODO: Add logical delete
     return ''
