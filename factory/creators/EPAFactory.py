@@ -1,4 +1,4 @@
-from ..interfaces.DiagnosisInterface import DiagnosisFactory, Diagnosis, Options
+from ..interfaces.DiagnosisInterface import DiagnosisFactory, Diagnosis
 from factory.products.EPADiagnosis import EPADiagnosis
 
 

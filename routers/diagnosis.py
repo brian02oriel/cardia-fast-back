@@ -4,18 +4,18 @@ from TAGS import TAGS
 from factory.creators.IAMFactory import IAMFactory
 from factory.creators.EPAFactory import EPAFactory
 from factory.implementations.diagnosis import perform_diagnosis
-from factory.interfaces.DiagnosisInterface import Options
+from factory.interfaces.DiagnosisInterface import DiagnosisBody
 
 diagnosis_router = APIRouter()
 
 # Register Entity
 @diagnosis_router.post('/api/diagnosis', tags=TAGS['DIAGNOSIS'])
-def create(options: Options):
+def create(body: DiagnosisBody):
     iam_factory = IAMFactory()
     epa_factory = EPAFactory()
     res = {
-        "IAM": perform_diagnosis(factory=iam_factory, options=options),
-        "EPA": perform_diagnosis(factory=epa_factory, options=options)
+        "IAM": perform_diagnosis(factory=iam_factory, options=body.symptoms),
+        "EPA": perform_diagnosis(factory=epa_factory, options=body.symptoms)
     }
     return JSONResponse(res, status_code=200) 
 

@@ -2,12 +2,18 @@ from abc import ABC, abstractmethod
 
 from pydantic import BaseModel
 
-class CustomSelectOption(BaseModel):
-    code: str
+
+class Option(BaseModel):
+    value: str
     label: str
 
-class Options(BaseModel):
-    options: list[CustomSelectOption]
+class DiagnosisBody(BaseModel):
+    firstName: str
+    lastName: str
+    personId: str
+    email: str
+    differential: list[Option]
+    symptoms: list[Option]
 
 class Rules(BaseModel):
     count: int
@@ -32,7 +38,7 @@ class Diagnosis(ABC):
 
     """ Abstract base class for Diagnosis."""
     @abstractmethod
-    def make_diagnosis(self, options: Options)-> float:
+    def make_diagnosis(self, options: list[Option])-> float:
         pass
 
 class DiagnosisFactory(ABC):

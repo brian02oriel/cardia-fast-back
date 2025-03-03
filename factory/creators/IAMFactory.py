@@ -1,5 +1,5 @@
 
-from factory.interfaces.DiagnosisInterface import Diagnosis, DiagnosisFactory, Options
+from factory.interfaces.DiagnosisInterface import Diagnosis, DiagnosisFactory
 from factory.products.IAMDiagnosis import IAMDiagnosis
 
 

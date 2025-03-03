@@ -1,4 +1,4 @@
-from factory.interfaces.DiagnosisInterface import Diagnosis, Factors, Options, Rules
+from factory.interfaces.DiagnosisInterface import Diagnosis, Factors, Option, Rules
 
 
 class IAMDiagnosis(Diagnosis):
@@ -78,11 +78,11 @@ class IAMDiagnosis(Diagnosis):
                 },
             ]
     
-    def make_diagnosis(self, options: Options)-> float:
+    def make_diagnosis(self, options: list[Option])-> float:
         rules = self.get_rules()
         factors = self.get_factors()
-        selected_codes = [ option.code for option in options.options]
-        selected_factors = [ factor for factor in factors if factor['code'] in selected_codes]
+        selected_values = [ option.value for option in options]
+        selected_factors = [ factor for factor in factors if factor['code'] in selected_values]
         count = sum(selected_factor["points"] for selected_factor in selected_factors)
         diagnose = 0
         for rule in rules:
