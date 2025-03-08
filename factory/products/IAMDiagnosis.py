@@ -1,4 +1,4 @@
-from factory.interfaces.DiagnosisInterface import Diagnosis, Factors, Option, Rules
+from factory.interfaces.DiagnosisInterface import Diagnosis, DiagnosisResponse, ESeverity, Factors, Option, Rules
 
 
 class IAMDiagnosis(Diagnosis):
@@ -78,7 +78,15 @@ class IAMDiagnosis(Diagnosis):
                 },
             ]
     
-    def make_diagnosis(self, options: list[Option])-> float:
+    def get_severity(self, diagnosis: float)-> ESeverity:
+        if diagnosis <= 10:
+            return ESeverity.LOW
+        elif diagnosis < 25:
+            return ESeverity.MEDIUM
+        else:
+            return ESeverity.HIGH
+    
+    def make_diagnosis(self, differential: list[Option], options: list[Option])-> DiagnosisResponse:
         rules = self.get_rules()
         factors = self.get_factors()
         selected_values = [ option.value for option in options]
@@ -89,4 +97,8 @@ class IAMDiagnosis(Diagnosis):
             if rule["count"] >= count:
                 diagnose = rule["percentage"]
                 break
-        return diagnose
+
+        severity = self.get_severity(diagnose)
+        diagnose = round(diagnose, 2)
+        symptoms = [ Option(value= option.value, label= option.label) for option in options if option.value in [ factor["code"] for factor in selected_factors]]
+        return DiagnosisResponse(diagnosis= diagnose, severity= severity, symptoms= symptoms, differential= differential, name= "Infarto Agudo del Miocardio", code= "IAM")
