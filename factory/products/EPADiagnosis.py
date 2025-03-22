@@ -2,6 +2,8 @@ from factory.interfaces.DiagnosisInterface import Diagnosis, DiagnosisResponse, 
 
 
 class EPADiagnosis(Diagnosis):
+    name = "Embolia Pulmonar Aguda"
+    code = "EPA"
     def get_rules(self) -> list[Rules]:
         return [
             {
@@ -64,11 +66,11 @@ class EPADiagnosis(Diagnosis):
         selected_factors = [ factor for factor in factors if factor['code'] in selected_values]
         count = sum(selected_factor["points"] for selected_factor in selected_factors)
         diagnose = 0
+        symptoms = [ Option(value= option.value, label= option.label) for option in options if option.value in [ factor["code"] for factor in selected_factors]]
+        if not count:
+            return DiagnosisResponse(diagnosis=diagnose, severity= self.get_severity(diagnose), symptoms= symptoms, differential= differential, name= self.name, code= self.code)
         for rule in rules:
             if rule["count"] >= count:
                 diagnose = rule["percentage"]
                 break
-        severity = self.get_severity(diagnose)
-        diagnose = round(diagnose, 2)
-        symptoms = [ Option(value= option.value, label= option.label) for option in options if option.value in [ factor["code"] for factor in selected_factors]]
-        return DiagnosisResponse(diagnosis= diagnose, severity= severity, symptoms= symptoms, differential= differential, name= "Embolia Pulmonar Aguda", code= "EPA")
+        return DiagnosisResponse(diagnosis= round(diagnose, 2), severity= self.get_severity(diagnose), symptoms= symptoms, differential= differential, name= self.name, code= self.code)

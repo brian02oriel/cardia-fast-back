@@ -37,7 +37,8 @@ class Factors(BaseModel):
     points: int
 
 class Diagnosis(ABC):
-
+    name: str
+    code: str
     """ Rules """
     @abstractmethod
     def get_rules(self)->list[Rules]:
