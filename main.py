@@ -1,12 +1,26 @@
-from fastapi import FastAPI
+from contextlib import asynccontextmanager
+from functools import lru_cache
+from typing import Annotated
+from fastapi import Depends, FastAPI
 import uvicorn
+import config
+from db.db import DBConnnection
 from routers.user import user_router
 from routers.diagnosis import diagnosis_router
 from routers.settings import settings_router
 from TAGS import TAGS
 from fastapi.middleware.cors import CORSMiddleware
 
-app = FastAPI()
+db_connection = DBConnnection()
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    await db_connection.connect(config.get_settings().MONGO_URI, config.get_settings().DB_NAME)
+    yield
+    await db_connection.disconnect()
+
+app = FastAPI(lifespan=lifespan)
+
 app.title = 'Cardia Fast API'
 app.version = '0.0.1'
 
