@@ -1,7 +1,5 @@
 from contextlib import asynccontextmanager
-from functools import lru_cache
-from typing import Annotated
-from fastapi import Depends, FastAPI
+from fastapi import FastAPI
 import uvicorn
 import config
 from db.db import DBConnnection

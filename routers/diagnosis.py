@@ -4,21 +4,16 @@ from factory.creators.IAMFactory import IAMFactory
 from factory.creators.EPAFactory import EPAFactory
 from factory.implementations.diagnosis import perform_diagnosis
 from factory.interfaces.DiagnosisInterface import DiagnosisBody, DiagnosisResponse
+from repositories.diagnosis.model import DiagnosisModel
+from services.diagnosis import DiagnosisService
 
 diagnosis_router = APIRouter()
 
 # Register Entity
 @diagnosis_router.post('/api/diagnosis', tags=TAGS['DIAGNOSIS'])
-def create(body: DiagnosisBody)->list[DiagnosisResponse]:
-    iam_factory = IAMFactory()
-    epa_factory = EPAFactory()
-    
-    res: list[DiagnosisResponse] = [
-        perform_diagnosis(factory=iam_factory, differential=body.differential, options=body.symptoms),
-        perform_diagnosis(factory=epa_factory, differential=body.differential, options=body.symptoms)
-    ]
-
-    return res
+def create(body: DiagnosisBody)->DiagnosisModel:
+    diagnosis = DiagnosisService()
+    return diagnosis.create_diagnosis(data=body)
 
 @diagnosis_router.get('/api/diagnosis', tags=TAGS['DIAGNOSIS'])
 def get():
