@@ -1,7 +1,9 @@
-from motor.motor_asyncio import AsyncIOMotorClient
+from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorDatabase
 from pymongo.errors import ConnectionFailure
 import logging
 from typing import Optional
+
+import config
 
 # Configure logging
 logging.basicConfig(
@@ -18,7 +20,7 @@ class DBConnnection:
     _client: Optional[AsyncIOMotorClient] = None
     _db = None
 
-    def __new__(cls, *args, **kwargs):
+    def __new__(cls):
         if cls._instance is None:
             cls._instance = super(DBConnnection, cls).__new__(cls)
             cls._instance._client = None
@@ -33,9 +35,9 @@ class DBConnnection:
                 # Verify connection is successful
                 await self._client.admin.command('ping')
                 self._db = self._client[db_name]
-                logger.info("Connected to MongoDB!")
+                logger.info(f"Connected to MongoDB: {db_name}")
             except ConnectionFailure:
-                logger.error("Failed to connect to MongoDB")
+                logger.error("Failed to connect to MongoDB: {connection_string}")
                 raise
 
     async def disconnect(self):
@@ -55,3 +57,11 @@ class DBConnnection:
     def client(self):
         """Return client instance"""
         return self._client
+    
+async def get_database() -> AsyncIOMotorDatabase:
+    db_instance = DBConnnection()
+    if db_instance.client is None:
+        connection_string = config.get_settings().MONGO_URI
+        db_name = config.get_settings().DB_NAME
+        await db_instance.connect(connection_string, db_name)
+    return db_instance.db

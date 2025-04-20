@@ -12,19 +12,19 @@ class DiagnosisService:
     async def create_diagnosis(self, body: DiagnosisBody)-> DiagnosisModel:
         iam_factory = IAMFactory()
         epa_factory = EPAFactory()
-        diagnosis: list[DiagnosisResponse] = [
-            perform_diagnosis(factory=iam_factory, differential=body.differential, options=body.symptoms),
-            perform_diagnosis(factory=epa_factory, differential=body.differential, options=body.symptoms)
+        diagnosis: list[dict] = [
+            perform_diagnosis(factory=iam_factory, differential=body.differential, options=body.symptoms).model_dump(),
+            perform_diagnosis(factory=epa_factory, differential=body.differential, options=body.symptoms).model_dump(),
         ]
         data: CreateDiagnosisModel = {
             **body.model_dump(),
-            'diagnosis': diagnosis
+            'diagnosis': diagnosis,
         }
         repository = DiagnosisRepository()
-        id = await repository.create_diagnosis(data=data)
+        id: str = await repository.create_diagnosis(data=data)
         res: DiagnosisModel = {
             **data,
-            'id': str(id),
+            'id': id,
         }
         return res
 
