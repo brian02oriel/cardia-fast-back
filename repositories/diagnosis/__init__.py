@@ -2,7 +2,7 @@ from fastapi import Depends
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
 from db.db import get_database
-from repositories.diagnosis.model import CreateDiagnosisModel
+from repositories.diagnosis.model import CreateDiagnosisModel, DiagnosisByPatient, DiagnosisFilters
 
 class DiagnosisRepository():
     def __init__(self):
@@ -17,3 +17,8 @@ class DiagnosisRepository():
         collection = await self.__get_collection__()
         res = await collection.insert_one(data)
         return str(res.inserted_id)
+    
+    async def get_diagnosis(self, filters: DiagnosisFilters):
+        # Create a collection of symptoms 
+        # Create a collection of differential
+        pass
