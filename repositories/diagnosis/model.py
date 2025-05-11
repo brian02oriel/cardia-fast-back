@@ -1,14 +1,22 @@
 from pydantic import BaseModel
 
-from factory.interfaces.DiagnosisInterface import DiagnosisBody, DiagnosisResponse, Option
+from factory.interfaces.DiagnosisInterface import PredictedDiagnosis, Option
+
+class DiagnosisBody(BaseModel):
+    firstName: str
+    lastName: str
+    personId: str
+    email: str
+    differential: list[Option]
+    symptoms: list[Option]
 
 
-class DiagnosisModel(BaseModel):
+class DiagnosisResponse(BaseModel):
     id: str
-    diagnosis: list[DiagnosisResponse]
+    diagnosis: list[PredictedDiagnosis]
 
 class CreateDiagnosisModel(DiagnosisBody):
-    diagnosis: list[DiagnosisResponse]
+    diagnosis: list[PredictedDiagnosis]
 
 class DiagnosisFilters(BaseModel):
     personId: list[str] = []
@@ -22,5 +30,5 @@ class PatientDiagnosisModel(BaseModel):
     firstName: str
     lastName: str
     email: str
-    higherDiagnosis: DiagnosisResponse
+    higherDiagnosis: PredictedDiagnosis
     mostFrequentSymptoms: Option

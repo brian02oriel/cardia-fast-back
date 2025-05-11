@@ -12,15 +12,7 @@ class Option(BaseModel):
     value: str
     label: str
 
-class DiagnosisBody(BaseModel):
-    firstName: str
-    lastName: str
-    personId: str
-    email: str
-    differential: list[Option]
-    symptoms: list[Option]
-
-class DiagnosisResponse(BaseModel):
+class PredictedDiagnosis(BaseModel):
     name: str
     code: str
     diagnosis: float
@@ -57,7 +49,7 @@ class Diagnosis(ABC):
 
     """ Abstract base class for Diagnosis."""
     @abstractmethod
-    def make_diagnosis(self, differential: list[Option], options: list[Option])-> DiagnosisResponse:
+    def make_diagnosis(self, differential: list[Option], options: list[Option])-> PredictedDiagnosis:
         pass
 
 class DiagnosisFactory(ABC):

@@ -1,4 +1,4 @@
-from factory.interfaces.DiagnosisInterface import Diagnosis, DiagnosisResponse, ESeverity, Factors, Option, Rules
+from factory.interfaces.DiagnosisInterface import Diagnosis, PredictedDiagnosis, ESeverity, Factors, Option, Rules
 
 
 class EPADiagnosis(Diagnosis):
@@ -68,9 +68,9 @@ class EPADiagnosis(Diagnosis):
         diagnose = 0
         symptoms = [ Option(value= option.value, label= option.label) for option in options if option.value in [ factor["code"] for factor in selected_factors]]
         if not count:
-            return DiagnosisResponse(diagnosis=diagnose, severity= self.get_severity(diagnose), symptoms= symptoms, differential= differential, name= self.name, code= self.code)
+            return PredictedDiagnosis(diagnosis=diagnose, severity= self.get_severity(diagnose), symptoms= symptoms, differential= differential, name= self.name, code= self.code)
         for rule in rules:
             if rule["count"] >= count:
                 diagnose = rule["percentage"]
                 break
-        return DiagnosisResponse(diagnosis= round(diagnose, 2), severity= self.get_severity(diagnose), symptoms= symptoms, differential= differential, name= self.name, code= self.code)
+        return PredictedDiagnosis(diagnosis= round(diagnose, 2), severity= self.get_severity(diagnose), symptoms= symptoms, differential= differential, name= self.name, code= self.code)

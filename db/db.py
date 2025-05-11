@@ -1,9 +1,7 @@
-from motor.motor_asyncio import AsyncIOMotorClient, AsyncIOMotorDatabase
+from motor.motor_asyncio import AsyncIOMotorClient
 from pymongo.errors import ConnectionFailure
 import logging
 from typing import Optional
-
-import config
 
 # Configure logging
 logging.basicConfig(
@@ -57,11 +55,3 @@ class DBConnnection:
     def client(self):
         """Return client instance"""
         return self._client
-    
-async def get_database() -> AsyncIOMotorDatabase:
-    db_instance = DBConnnection()
-    if db_instance.client is None:
-        connection_string = config.get_settings().MONGO_URI
-        db_name = config.get_settings().DB_NAME
-        await db_instance.connect(connection_string, db_name)
-    return db_instance.db

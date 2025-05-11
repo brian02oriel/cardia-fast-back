@@ -1,0 +1,75 @@
+[
+    {
+        "value": "olderThan65",
+        "label": "Persona mayor a 65 años"
+    },
+    {
+        "value": "hypertension",
+        "label": "Sufre hipertensión"
+    },
+    {
+        "value": "diabetes",
+        "label": "Sufre diabetes"
+       
+    },
+    {
+        "value": "hyperlipidemia",
+        "label": "Hiperlipidemia"
+    },
+    {
+        "value": "smoker",
+        "label": "Fumador"
+    },
+    {
+        "value": "historyOfHeartDisease",
+        "label": "Historial familiar de enfermedades cardiacas"
+    },
+    {
+        "value": "historyOfCoronaryStenosis",
+        "label": "Historial de Estenosis Coronaria (>=50%)"
+    },
+    {
+        "value": "anginaEpisodes",
+        "label": "Al menos dos episodios de angina (en las últimas 24h)"
+    },
+    {
+        "value": "aspirinUsage",
+        "label": "Uso de aspirina en los últimos 7 días"
+    },
+    {
+        "value": "segmentSTChanges",
+        "label": "Desviación/Cambio en el segmento ST (>=0.05 mV)"
+    },
+    {
+        "value": "necrosisMarkers",
+        "label": "Marcadores cardiacos de necrosis (troponina o CK-MB)"
+    },
+    {
+        "value": "deepVeinThrombosis",
+        "label": "Signos clínicos de trombosis venosa profunda (TVP)"
+    },
+    {
+        "value": "alternativeToEP",
+        "label": "Diagnóstico alternativo menos probable que la EP"
+    },
+    {
+        "value": "beatsPerMinutesOverHundred",
+        "label": "Frecuencia cardíaca > 100bpm"
+    },
+    {
+        "value": "previousSurgery",
+        "label": "Inmovilización o cirugía mayor en las últimas 4 semanas"
+    },
+    {
+        "value": "previousTVPOrEp",
+        "label": "Historia previa de EP o TVP"
+    },
+    {
+        "value": "hemoptisis",
+        "label": "Hemoptisis"
+    },
+    {
+        "value": "activeCancer",
+        "label": "Cáncer activo"
+    }
+]
