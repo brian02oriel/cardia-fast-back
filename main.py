@@ -1,8 +1,10 @@
 from contextlib import asynccontextmanager
 from fastapi import FastAPI
+from pymongo import ASCENDING
 import uvicorn
 import config
 from db.db import DBConnnection
+from db.utils import DBUtils
 from routers.user import user_router
 from routers.symptoms import symptoms_router
 from routers.diagnosis import diagnosis_router
@@ -15,6 +17,46 @@ db_connection = DBConnnection()
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     await db_connection.connect(config.get_settings().MONGO_URI, config.get_settings().DB_NAME)
+    db_utils = DBUtils()
+    await db_utils.create_index(
+        db_connection.db, 
+        'diagnosis', 
+        'text_field_index', 
+        ['firstName', 'lastName', 'personId', 'email'],
+        unique=False)
+    await db_utils.create_view(
+        db_connection.db, 
+        'diagnosis', 
+        'diagnosis_view', 
+        [
+            {
+                '$group': {
+                '_id': "$personId",
+                'firstName': { '$first': "$firstName" },
+                'lastName': { '$first': "$lastName" },
+                'email': { '$first': "$email" },
+                'differential': { '$first': "differential" },
+                    'count': { '$sum': 1 },
+                }
+            },
+            { 
+                '$match': { 
+                'count': { '$gt': 1 } 
+                } 
+            },
+            {
+                '$project': {
+                '_id': "$documents._id",
+                'personId': "$_id",
+                'firstName': 1,
+                'lastName': 1,
+                'email': 1,
+                'differential': 1,
+                'count': 1
+                }
+            },
+        ]
+    )
     yield
     await db_connection.disconnect()
 

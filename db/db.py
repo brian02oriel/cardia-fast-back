@@ -1,4 +1,4 @@
-from motor.motor_asyncio import AsyncIOMotorClient
+from pymongo import AsyncMongoClient
 from pymongo.errors import ConnectionFailure
 import logging
 from typing import Optional
@@ -15,7 +15,7 @@ class DBConnnection:
     Singleton pattern implementation for MongoDB connection
     """
     _instance = None
-    _client: Optional[AsyncIOMotorClient] = None
+    _client: Optional[AsyncMongoClient] = None
     _db = None
 
     def __new__(cls):
@@ -29,7 +29,7 @@ class DBConnnection:
         if self._client is None:
             try:
                 logger.info("Connecting to MongoDB...")
-                self._client = AsyncIOMotorClient(connection_string)
+                self._client = AsyncMongoClient(connection_string)
                 # Verify connection is successful
                 await self._client.admin.command('ping')
                 self._db = self._client[db_name]
