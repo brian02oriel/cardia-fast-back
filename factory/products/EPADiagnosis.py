@@ -59,7 +59,7 @@ class EPADiagnosis(Diagnosis):
         else:
             return ESeverity.HIGH
 
-    def make_diagnosis(self, differential: list[Option], options: list[Option])-> float:
+    def make_diagnosis(self, differential: Option, options: list[Option])-> float:
         rules = self.get_rules()
         factors = self.get_factors()
         selected_values = [ option.value for option in options]

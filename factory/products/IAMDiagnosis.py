@@ -88,7 +88,7 @@ class IAMDiagnosis(Diagnosis):
         else:
             return ESeverity.HIGH
     
-    def make_diagnosis(self, differential: list[Option], options: list[Option])-> PredictedDiagnosis:
+    def make_diagnosis(self, differential: Option, options: list[Option])-> PredictedDiagnosis:
         rules = self.get_rules()
         factors = self.get_factors()
         selected_values = [ option.value for option in options]

@@ -35,7 +35,7 @@ async def lifespan(app: FastAPI):
                 'firstName': { '$first': "$firstName" },
                 'lastName': { '$first': "$lastName" },
                 'email': { '$first': "$email" },
-                'differential': { '$first': "differential" },
+                'differential': { '$first': "$differential" },
                     'count': { '$sum': 1 },
                 }
             },

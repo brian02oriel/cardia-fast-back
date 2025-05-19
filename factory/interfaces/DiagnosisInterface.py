@@ -17,7 +17,7 @@ class PredictedDiagnosis(BaseModel):
     code: str
     diagnosis: float
     symptoms: list[Option]
-    differential: list[Option]
+    differential: Option
     severity: ESeverity
 
 class Rules(BaseModel):
@@ -49,7 +49,7 @@ class Diagnosis(ABC):
 
     """ Abstract base class for Diagnosis."""
     @abstractmethod
-    def make_diagnosis(self, differential: list[Option], options: list[Option])-> PredictedDiagnosis:
+    def make_diagnosis(self, differential: Option, options: list[Option])-> PredictedDiagnosis:
         pass
 
 class DiagnosisFactory(ABC):

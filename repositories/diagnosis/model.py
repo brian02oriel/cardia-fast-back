@@ -7,7 +7,7 @@ class DiagnosisBody(BaseModel):
     lastName: str
     personId: str
     email: str
-    differential: list[Option]
+    differential: Option
     symptoms: list[Option]
 
 
@@ -32,3 +32,11 @@ class PatientDiagnosisModel(BaseModel):
     email: str
     higherDiagnosis: PredictedDiagnosis
     mostFrequentSymptoms: Option
+
+class PatientDiagnosisResponse(BaseModel):
+    personId: str
+    firstName: str
+    lastName: str
+    email: str
+    differential: Option
+    count: int
