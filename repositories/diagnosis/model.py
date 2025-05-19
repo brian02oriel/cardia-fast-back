@@ -19,10 +19,10 @@ class CreateDiagnosisModel(DiagnosisBody):
     diagnosis: list[PredictedDiagnosis]
 
 class DiagnosisFilters(BaseModel):
-    personId: list[str] = []
-    firstName: list[str] = []
-    lastName: list[str] = []
-    email: list[str] = []
+    personId: list[str] | None = None
+    firstName: list[str] | None = None
+    lastName: list[str] | None = None
+    email: list[str] | None = None
     search: str = ''
 
 class PatientDiagnosisModel(BaseModel):
