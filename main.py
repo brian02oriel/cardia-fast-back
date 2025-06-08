@@ -22,7 +22,7 @@ async def lifespan(app: FastAPI):
         db_connection.db, 
         'diagnosis', 
         'text_field_index', 
-        ['firstName', 'lastName', 'personId', 'email'],
+        ['firstName', 'lastName', 'age', 'personId', 'email'],
         unique=False)
     await db_utils.create_view(
         db_connection.db, 
@@ -34,6 +34,7 @@ async def lifespan(app: FastAPI):
                 '_id': "$personId",
                 'firstName': { '$first': "$firstName" },
                 'lastName': { '$first': "$lastName" },
+                'age': { '$first': "$age" },
                 'email': { '$first': "$email" },
                 'differential': { '$first': "$differential" },
                     'count': { '$sum': 1 },
@@ -50,6 +51,7 @@ async def lifespan(app: FastAPI):
                 'personId': "$_id",
                 'firstName': 1,
                 'lastName': 1,
+                'age': 1,
                 'email': 1,
                 'differential': 1,
                 'count': 1

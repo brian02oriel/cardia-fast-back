@@ -5,6 +5,7 @@ from factory.interfaces.DiagnosisInterface import PredictedDiagnosis, Option
 class DiagnosisBody(BaseModel):
     firstName: str
     lastName: str
+    age: int | None = None
     personId: str
     email: str
     differential: Option
@@ -29,6 +30,7 @@ class PatientDiagnosisModel(BaseModel):
     id: str
     firstName: str
     lastName: str
+    age: int | None = None
     email: str
     higherDiagnosis: PredictedDiagnosis
     mostFrequentSymptoms: Option
@@ -37,6 +39,7 @@ class PatientDiagnosisResponse(BaseModel):
     personId: str
     firstName: str
     lastName: str
+    age: int | None = None
     email: str
     differential: Option
     count: int
