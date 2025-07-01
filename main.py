@@ -18,12 +18,18 @@ db_connection = DBConnnection()
 async def lifespan(app: FastAPI):
     await db_connection.connect(config.get_settings().MONGO_URI, config.get_settings().DB_NAME)
     db_utils = DBUtils()
+
+    indexes = await db_utils.get_indexes(db_connection.db, 'diagnosis')
+    if indexes:
+        for index in indexes:
+            await db_utils.drop_index(db_connection.db, 'diagnosis', index)
     await db_utils.create_index(
         db_connection.db, 
         'diagnosis', 
         'text_field_index', 
         ['firstName', 'lastName', 'age', 'personId', 'email'],
         unique=False)
+    await db_utils.drop_view(db_connection.db, 'diagnosis_view')
     await db_utils.create_view(
         db_connection.db, 
         'diagnosis', 
@@ -42,7 +48,7 @@ async def lifespan(app: FastAPI):
             },
             { 
                 '$match': { 
-                'count': { '$gt': 1 } 
+                'count': { '$gt': 0 } 
                 } 
             },
             {

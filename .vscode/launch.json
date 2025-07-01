@@ -1,19 +1,63 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
-
         {
-            "name": "Python Debugger: Current File",
+            "name": "FastAPI Debug (NO RELOAD - for lifespan)",
             "type": "debugpy",
             "request": "launch",
-            "program": "main.py",
+            "module": "uvicorn",
+            "args": [
+                "main:app",
+                "--port",
+                "8000",
+                "--host",
+                "0.0.0.0"
+            ],
             "console": "integratedTerminal",
-            "python": "${command:python.interpreterPath}",
-            "autoReload": {
-                "enable": true
+            "justMyCode": false,
+            "subProcess": true,
+            "env": {
+                "PYTHONPATH": "./;./src"
+            }
+        },
+        {
+            "name": "FastAPI Debug (with reload - won't debug lifespan)",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "uvicorn",
+            "args": [
+                "main:app",
+                "--reload",
+                "--port",
+                "8000"
+            ],
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "subProcess": true,
+            "env": {
+                "PYTHONPATH": "./;./src"
+            }
+        },
+        {
+            "name": "FastAPI Direct Run (best for lifespan)",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${workspaceFolder}/main.py",
+            "console": "integratedTerminal",
+            "justMyCode": false,
+            "env": {
+                "PYTHONPATH": "./;./src"
+            }
+        },
+        {
+            "name": "Current File",
+            "type": "debugpy",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "env": {
+                "PYTHONPATH": "./;./src"
             }
         }
     ]

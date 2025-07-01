@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Depends
 from TAGS import TAGS
 from repositories.diagnosis.model import DiagnosisBody, DiagnosisFilters, DiagnosisResponse, PatientDiagnosisResponse
 from services.diagnosis import DiagnosisService
@@ -14,7 +14,7 @@ async def create(body: DiagnosisBody)->DiagnosisResponse:
 
 
 @diagnosis_router.get('/api/diagnosis', tags=TAGS['DIAGNOSIS'])
-async def get(filters: DiagnosisFilters | None = None)->list[PatientDiagnosisResponse]:
+async def get(filters: DiagnosisFilters = Depends())->list[PatientDiagnosisResponse]:
     diagnosis = DiagnosisService()
     res: list[PatientDiagnosisResponse] = await diagnosis.get_diagnosis(filters=filters)
     return res

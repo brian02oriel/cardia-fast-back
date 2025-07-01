@@ -18,19 +18,22 @@ class DiagnosisRepository():
         db_utils = DBUtils()
         collection = await db_utils.get_collection(db=self.db, collection_name='diagnosis_view')
         pipeline = []
-        if filters and not filters.search:
+        if not filters.search and (filters.personId or filters.firstName or filters.lastName or filters.email):
             pipeline.append({
                 field: { '$in': filters[field]}
             } for field in filters if filters[field])
         if filters and filters.search and not filters.personId and not filters.firstName and not filters.lastName and not filters.email:
-            pipeline.append({
-                '$or': [
-                    { 'personId': { '$regex': filters.search, '$options': 'i' }},
-                    { 'firstName': { '$regex': filters.search, '$options': 'i' }},
-                    { 'lastName': { '$regex': filters.search, '$options': 'i' }},
-                    { 'email': { '$regex': filters.search, '$options': 'i' }}
-                ]
-            })
+            pipeline.append(
+                {
+                    '$match': {
+                        '$or': [
+                            { 'personId': { '$regex': filters.search, '$options': 'i' }},
+                            { 'firstName': { '$regex': filters.search, '$options': 'i' }},
+                            { 'lastName': { '$regex': filters.search, '$options': 'i' }},
+                            { 'email': { '$regex': filters.search, '$options': 'i' }}
+                        ]
+                    }
+})
 
         res = await collection.aggregate(pipeline)
         res: list[PatientDiagnosisResponse] = [PatientDiagnosisResponse(**doc) async for doc in res]

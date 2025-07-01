@@ -1,0 +1,987 @@
+[
+    {
+      "firstName": "María",
+      "lastName": "González",
+      "age": 67,
+      "personId": "MDG001",
+      "email": "maria.gonzalez@email.com",
+      "differential": {
+        "value": "chestPain",
+        "label": "Dolor de pecho"
+      },
+      "symptoms": [
+        {
+          "value": "olderThan65",
+          "label": "Persona mayor a 65 años"
+        },
+        {
+          "value": "hypertension",
+          "label": "Sufre hipertensión"
+        },
+        {
+          "value": "anginaEpisodes",
+          "label": "Al menos dos episodios de angina (en las últimas 24h)"
+        },
+        {
+          "value": "segmentSTChanges",
+          "label": "Desviación/Cambio en el segmento ST (>=0.05 mV)"
+        }
+      ],
+      "diagnosis": [
+        {
+          "name": "Infarto Agudo del Miocardio",
+          "code": "IAM",
+          "diagnosis": 0.89,
+          "symptoms": [
+            {
+              "value": "olderThan65",
+              "label": "Persona mayor a 65 años"
+            },
+            {
+              "value": "hypertension",
+              "label": "Sufre hipertensión"
+            },
+            {
+              "value": "anginaEpisodes",
+              "label": "Al menos dos episodios de angina (en las últimas 24h)"
+            }
+          ],
+          "differential": {
+            "value": "chestPain",
+            "label": "Dolor de pecho"
+          },
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "firstName": "Carlos",
+      "lastName": "Rodríguez",
+      "age": 45,
+      "personId": "CRD002",
+      "email": "carlos.rodriguez@email.com",
+      "differential": {
+        "value": "chestPain",
+        "label": "Dolor de pecho"
+      },
+      "symptoms": [
+        {
+          "value": "smoker",
+          "label": "Fumador"
+        },
+        {
+          "value": "beatsPerMinutesOverHundred",
+          "label": "Frecuencia cardíaca > 100bpm"
+        },
+        {
+          "value": "hemoptisis",
+          "label": "Hemoptisis"
+        },
+        {
+          "value": "deepVeinThrombosis",
+          "label": "Signos clínicos de trombosis venosa profunda (TVP)"
+        }
+      ],
+      "diagnosis": [
+        {
+          "name": "Embolia Pulmonar Aguda",
+          "code": "EPA",
+          "diagnosis": 0.76,
+          "symptoms": [
+            {
+              "value": "smoker",
+              "label": "Fumador"
+            },
+            {
+              "value": "hemoptisis",
+              "label": "Hemoptisis"
+            },
+            {
+              "value": "deepVeinThrombosis",
+              "label": "Signos clínicos de trombosis venosa profunda (TVP)"
+            }
+          ],
+          "differential": {
+            "value": "chestPain",
+            "label": "Dolor de pecho"
+          },
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "firstName": "Ana",
+      "lastName": "López",
+      "age": 72,
+      "personId": "ALP003",
+      "email": "ana.lopez@email.com",
+      "differential": {
+        "value": "chestPain",
+        "label": "Dolor de pecho"
+      },
+      "symptoms": [
+        {
+          "value": "olderThan65",
+          "label": "Persona mayor a 65 años"
+        },
+        {
+          "value": "diabetes",
+          "label": "Sufre diabetes"
+        },
+        {
+          "value": "historyOfHeartDisease",
+          "label": "Historial familiar de enfermedades cardiacas"
+        },
+        {
+          "value": "necrosisMarkers",
+          "label": "Marcadores cardiacos de necrosis (troponina o CK-MB)"
+        }
+      ],
+      "diagnosis": [
+        {
+          "name": "Infarto Agudo del Miocardio",
+          "code": "IAM",
+          "diagnosis": 0.92,
+          "symptoms": [
+            {
+              "value": "olderThan65",
+              "label": "Persona mayor a 65 años"
+            },
+            {
+              "value": "diabetes",
+              "label": "Sufre diabetes"
+            },
+            {
+              "value": "necrosisMarkers",
+              "label": "Marcadores cardiacos de necrosis (troponina o CK-MB)"
+            }
+          ],
+          "differential": {
+            "value": "chestPain",
+            "label": "Dolor de pecho"
+          },
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "firstName": "José",
+      "lastName": "Martínez",
+      "age": 38,
+      "personId": "JMT004",
+      "email": "jose.martinez@email.com",
+      "differential": {
+        "value": "chestPain",
+        "label": "Dolor de pecho"
+      },
+      "symptoms": [
+        {
+          "value": "activeCancer",
+          "label": "Cáncer activo"
+        },
+        {
+          "value": "previousSurgery",
+          "label": "Inmovilización o cirugía mayor en las últimas 4 semanas"
+        },
+        {
+          "value": "alternativeToEP",
+          "label": "Diagnóstico alternativo menos probable que la EP"
+        }
+      ],
+      "diagnosis": [
+        {
+          "name": "Embolia Pulmonar Aguda",
+          "code": "EPA",
+          "diagnosis": 0.83,
+          "symptoms": [
+            {
+              "value": "activeCancer",
+              "label": "Cáncer activo"
+            },
+            {
+              "value": "previousSurgery",
+              "label": "Inmovilización o cirugía mayor en las últimas 4 semanas"
+            }
+          ],
+          "differential": {
+            "value": "chestPain",
+            "label": "Dolor de pecho"
+          },
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "firstName": "Carmen",
+      "lastName": "Sánchez",
+      "age": 69,
+      "personId": "CSZ005",
+      "email": "carmen.sanchez@email.com",
+      "differential": {
+        "value": "chestPain",
+        "label": "Dolor de pecho"
+      },
+      "symptoms": [
+        {
+          "value": "olderThan65",
+          "label": "Persona mayor a 65 años"
+        },
+        {
+          "value": "hyperlipidemia",
+          "label": "Hiperlipidemia"
+        },
+        {
+          "value": "aspirinUsage",
+          "label": "Uso de aspirina en los últimos 7 días"
+        }
+      ],
+      "diagnosis": [
+        {
+          "name": "Infarto Agudo del Miocardio",
+          "code": "IAM",
+          "diagnosis": 0.65,
+          "symptoms": [
+            {
+              "value": "olderThan65",
+              "label": "Persona mayor a 65 años"
+            },
+            {
+              "value": "hyperlipidemia",
+              "label": "Hiperlipidemia"
+            }
+          ],
+          "differential": {
+            "value": "chestPain",
+            "label": "Dolor de pecho"
+          },
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "firstName": "Francisco",
+      "lastName": "García",
+      "age": 55,
+      "personId": "FGC006",
+      "email": "francisco.garcia@email.com",
+      "differential": {
+        "value": "chestPain",
+        "label": "Dolor de pecho"
+      },
+      "symptoms": [
+        {
+          "value": "smoker",
+          "label": "Fumador"
+        },
+        {
+          "value": "hypertension",
+          "label": "Sufre hipertensión"
+        },
+        {
+          "value": "historyOfCoronaryStenosis",
+          "label": "Historial de Estenosis Coronaria (>=50%)"
+        },
+        {
+          "value": "segmentSTChanges",
+          "label": "Desviación/Cambio en el segmento ST (>=0.05 mV)"
+        }
+      ],
+      "diagnosis": [
+        {
+          "name": "Infarto Agudo del Miocardio",
+          "code": "IAM",
+          "diagnosis": 0.88,
+          "symptoms": [
+            {
+              "value": "smoker",
+              "label": "Fumador"
+            },
+            {
+              "value": "hypertension",
+              "label": "Sufre hipertensión"
+            },
+            {
+              "value": "historyOfCoronaryStenosis",
+              "label": "Historial de Estenosis Coronaria (>=50%)"
+            }
+          ],
+          "differential": {
+            "value": "chestPain",
+            "label": "Dolor de pecho"
+          },
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "firstName": "Isabel",
+      "lastName": "Fernández",
+      "age": 42,
+      "personId": "IFZ007",
+      "email": "isabel.fernandez@email.com",
+      "differential": {
+        "value": "chestPain",
+        "label": "Dolor de pecho"
+      },
+      "symptoms": [
+        {
+          "value": "previousTVPOrEp",
+          "label": "Historia previa de EP o TVP"
+        },
+        {
+          "value": "beatsPerMinutesOverHundred",
+          "label": "Frecuencia cardíaca > 100bpm"
+        },
+        {
+          "value": "deepVeinThrombosis",
+          "label": "Signos clínicos de trombosis venosa profunda (TVP)"
+        }
+      ],
+      "diagnosis": [
+        {
+          "name": "Embolia Pulmonar Aguda",
+          "code": "EPA",
+          "diagnosis": 0.81,
+          "symptoms": [
+            {
+              "value": "previousTVPOrEp",
+              "label": "Historia previa de EP o TVP"
+            },
+            {
+              "value": "deepVeinThrombosis",
+              "label": "Signos clínicos de trombosis venosa profunda (TVP)"
+            }
+          ],
+          "differential": {
+            "value": "chestPain",
+            "label": "Dolor de pecho"
+          },
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "firstName": "Miguel",
+      "lastName": "Herrera",
+      "age": 71,
+      "personId": "MHR008",
+      "email": "miguel.herrera@email.com",
+      "differential": {
+        "value": "chestPain",
+        "label": "Dolor de pecho"
+      },
+      "symptoms": [
+        {
+          "value": "olderThan65",
+          "label": "Persona mayor a 65 años"
+        },
+        {
+          "value": "diabetes",
+          "label": "Sufre diabetes"
+        },
+        {
+          "value": "hypertension",
+          "label": "Sufre hipertensión"
+        },
+        {
+          "value": "anginaEpisodes",
+          "label": "Al menos dos episodios de angina (en las últimas 24h)"
+        },
+        {
+          "value": "necrosisMarkers",
+          "label": "Marcadores cardiacos de necrosis (troponina o CK-MB)"
+        }
+      ],
+      "diagnosis": [
+        {
+          "name": "Infarto Agudo del Miocardio",
+          "code": "IAM",
+          "diagnosis": 0.95,
+          "symptoms": [
+            {
+              "value": "olderThan65",
+              "label": "Persona mayor a 65 años"
+            },
+            {
+              "value": "diabetes",
+              "label": "Sufre diabetes"
+            },
+            {
+              "value": "hypertension",
+              "label": "Sufre hipertensión"
+            },
+            {
+              "value": "anginaEpisodes",
+              "label": "Al menos dos episodios de angina (en las últimas 24h)"
+            },
+            {
+              "value": "necrosisMarkers",
+              "label": "Marcadores cardiacos de necrosis (troponina o CK-MB)"
+            }
+          ],
+          "differential": {
+            "value": "chestPain",
+            "label": "Dolor de pecho"
+          },
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "firstName": "Pilar",
+      "lastName": "Ruiz",
+      "age": 33,
+      "personId": "PRZ009",
+      "email": "pilar.ruiz@email.com",
+      "differential": {
+        "value": "chestPain",
+        "label": "Dolor de pecho"
+      },
+      "symptoms": [
+        {
+          "value": "smoker",
+          "label": "Fumador"
+        },
+        {
+          "value": "previousSurgery",
+          "label": "Inmovilización o cirugía mayor en las últimas 4 semanas"
+        }
+      ],
+      "diagnosis": [
+        {
+          "name": "Embolia Pulmonar Aguda",
+          "code": "EPA",
+          "diagnosis": 0.58,
+          "symptoms": [
+            {
+              "value": "smoker",
+              "label": "Fumador"
+            },
+            {
+              "value": "previousSurgery",
+              "label": "Inmovilización o cirugía mayor en las últimas 4 semanas"
+            }
+          ],
+          "differential": {
+            "value": "chestPain",
+            "label": "Dolor de pecho"
+          },
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "firstName": "Antonio",
+      "lastName": "Jiménez",
+      "age": 68,
+      "personId": "AJM010",
+      "email": "antonio.jimenez@email.com",
+      "differential": {
+        "value": "chestPain",
+        "label": "Dolor de pecho"
+      },
+      "symptoms": [
+        {
+          "value": "olderThan65",
+          "label": "Persona mayor a 65 años"
+        },
+        {
+          "value": "historyOfHeartDisease",
+          "label": "Historial familiar de enfermedades cardiacas"
+        },
+        {
+          "value": "hyperlipidemia",
+          "label": "Hiperlipidemia"
+        },
+        {
+          "value": "aspirinUsage",
+          "label": "Uso de aspirina en los últimos 7 días"
+        }
+      ],
+      "diagnosis": [
+        {
+          "name": "Infarto Agudo del Miocardio",
+          "code": "IAM",
+          "diagnosis": 0.73,
+          "symptoms": [
+            {
+              "value": "olderThan65",
+              "label": "Persona mayor a 65 años"
+            },
+            {
+              "value": "historyOfHeartDisease",
+              "label": "Historial familiar de enfermedades cardiacas"
+            },
+            {
+              "value": "hyperlipidemia",
+              "label": "Hiperlipidemia"
+            }
+          ],
+          "differential": {
+            "value": "chestPain",
+            "label": "Dolor de pecho"
+          },
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "firstName": "Rosa",
+      "lastName": "Moreno",
+      "age": 49,
+      "personId": "RMN011",
+      "email": "rosa.moreno@email.com",
+      "differential": {
+        "value": "chestPain",
+        "label": "Dolor de pecho"
+      },
+      "symptoms": [
+        {
+          "value": "activeCancer",
+          "label": "Cáncer activo"
+        },
+        {
+          "value": "hemoptisis",
+          "label": "Hemoptisis"
+        },
+        {
+          "value": "alternativeToEP",
+          "label": "Diagnóstico alternativo menos probable que la EP"
+        },
+        {
+          "value": "beatsPerMinutesOverHundred",
+          "label": "Frecuencia cardíaca > 100bpm"
+        }
+      ],
+      "diagnosis": [
+        {
+          "name": "Embolia Pulmonar Aguda",
+          "code": "EPA",
+          "diagnosis": 0.87,
+          "symptoms": [
+            {
+              "value": "activeCancer",
+              "label": "Cáncer activo"
+            },
+            {
+              "value": "hemoptisis",
+              "label": "Hemoptisis"
+            },
+            {
+              "value": "alternativeToEP",
+              "label": "Diagnóstico alternativo menos probable que la EP"
+            }
+          ],
+          "differential": {
+            "value": "chestPain",
+            "label": "Dolor de pecho"
+          },
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "firstName": "Pedro",
+      "lastName": "Vargas",
+      "age": 56,
+      "personId": "PVG012",
+      "email": "pedro.vargas@email.com",
+      "differential": {
+        "value": "chestPain",
+        "label": "Dolor de pecho"
+      },
+      "symptoms": [
+        {
+          "value": "smoker",
+          "label": "Fumador"
+        },
+        {
+          "value": "diabetes",
+          "label": "Sufre diabetes"
+        },
+        {
+          "value": "segmentSTChanges",
+          "label": "Desviación/Cambio en el segmento ST (>=0.05 mV)"
+        }
+      ],
+      "diagnosis": [
+        {
+          "name": "Infarto Agudo del Miocardio",
+          "code": "IAM",
+          "diagnosis": 0.79,
+          "symptoms": [
+            {
+              "value": "smoker",
+              "label": "Fumador"
+            },
+            {
+              "value": "diabetes",
+              "label": "Sufre diabetes"
+            },
+            {
+              "value": "segmentSTChanges",
+              "label": "Desviación/Cambio en el segmento ST (>=0.05 mV)"
+            }
+          ],
+          "differential": {
+            "value": "chestPain",
+            "label": "Dolor de pecho"
+          },
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "firstName": "Lucía",
+      "lastName": "Castro",
+      "age": 29,
+      "personId": "LCT013",
+      "email": "lucia.castro@email.com",
+      "differential": {
+        "value": "chestPain",
+        "label": "Dolor de pecho"
+      },
+      "symptoms": [
+        {
+          "value": "previousTVPOrEp",
+          "label": "Historia previa de EP o TVP"
+        },
+        {
+          "value": "previousSurgery",
+          "label": "Inmovilización o cirugía mayor en las últimas 4 semanas"
+        }
+      ],
+      "diagnosis": [
+        {
+          "name": "Embolia Pulmonar Aguda",
+          "code": "EPA",
+          "diagnosis": 0.68,
+          "symptoms": [
+            {
+              "value": "previousTVPOrEp",
+              "label": "Historia previa de EP o TVP"
+            },
+            {
+              "value": "previousSurgery",
+              "label": "Inmovilización o cirugía mayor en las últimas 4 semanas"
+            }
+          ],
+          "differential": {
+            "value": "chestPain",
+            "label": "Dolor de pecho"
+          },
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "firstName": "Ramón",
+      "lastName": "Ortega",
+      "age": 74,
+      "personId": "ROG014",
+      "email": "ramon.ortega@email.com",
+      "differential": {
+        "value": "chestPain",
+        "label": "Dolor de pecho"
+      },
+      "symptoms": [
+        {
+          "value": "olderThan65",
+          "label": "Persona mayor a 65 años"
+        },
+        {
+          "value": "hypertension",
+          "label": "Sufre hipertensión"
+        },
+        {
+          "value": "hyperlipidemia",
+          "label": "Hiperlipidemia"
+        },
+        {
+          "value": "historyOfCoronaryStenosis",
+          "label": "Historial de Estenosis Coronaria (>=50%)"
+        },
+        {
+          "value": "anginaEpisodes",
+          "label": "Al menos dos episodios de angina (en las últimas 24h)"
+        }
+      ],
+      "diagnosis": [
+        {
+          "name": "Infarto Agudo del Miocardio",
+          "code": "IAM",
+          "diagnosis": 0.93,
+          "symptoms": [
+            {
+              "value": "olderThan65",
+              "label": "Persona mayor a 65 años"
+            },
+            {
+              "value": "hypertension",
+              "label": "Sufre hipertensión"
+            },
+            {
+              "value": "hyperlipidemia",
+              "label": "Hiperlipidemia"
+            },
+            {
+              "value": "historyOfCoronaryStenosis",
+              "label": "Historial de Estenosis Coronaria (>=50%)"
+            },
+            {
+              "value": "anginaEpisodes",
+              "label": "Al menos dos episodios de angina (en las últimas 24h)"
+            }
+          ],
+          "differential": {
+            "value": "chestPain",
+            "label": "Dolor de pecho"
+          },
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "firstName": "Teresa",
+      "lastName": "Delgado",
+      "age": 36,
+      "personId": "TDG015",
+      "email": "teresa.delgado@email.com",
+      "differential": {
+        "value": "chestPain",
+        "label": "Dolor de pecho"
+      },
+      "symptoms": [
+        {
+          "value": "activeCancer",
+          "label": "Cáncer activo"
+        },
+        {
+          "value": "deepVeinThrombosis",
+          "label": "Signos clínicos de trombosis venosa profunda (TVP)"
+        }
+      ],
+      "diagnosis": [
+        {
+          "name": "Embolia Pulmonar Aguda",
+          "code": "EPA",
+          "diagnosis": 0.75,
+          "symptoms": [
+            {
+              "value": "activeCancer",
+              "label": "Cáncer activo"
+            },
+            {
+              "value": "deepVeinThrombosis",
+              "label": "Signos clínicos de trombosis venosa profunda (TVP)"
+            }
+          ],
+          "differential": {
+            "value": "chestPain",
+            "label": "Dolor de pecho"
+          },
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "firstName": "Javier",
+      "lastName": "Ramos",
+      "age": 52,
+      "personId": "JRM016",
+      "email": "javier.ramos@email.com",
+      "differential": {
+        "value": "chestPain",
+        "label": "Dolor de pecho"
+      },
+      "symptoms": [
+        {
+          "value": "smoker",
+          "label": "Fumador"
+        },
+        {
+          "value": "hypertension",
+          "label": "Sufre hipertensión"
+        },
+        {
+          "value": "necrosisMarkers",
+          "label": "Marcadores cardiacos de necrosis (troponina o CK-MB)"
+        }
+      ],
+      "diagnosis": [
+        {
+          "name": "Infarto Agudo del Miocardio",
+          "code": "IAM",
+          "diagnosis": 0.84,
+          "symptoms": [
+            {
+              "value": "smoker",
+              "label": "Fumador"
+            },
+            {
+              "value": "hypertension",
+              "label": "Sufre hipertensión"
+            },
+            {
+              "value": "necrosisMarkers",
+              "label": "Marcadores cardiacos de necrosis (troponina o CK-MB)"
+            }
+          ],
+          "differential": {
+            "value": "chestPain",
+            "label": "Dolor de pecho"
+          },
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "firstName": "Dolores",
+      "lastName": "Vega",
+      "age": 41,
+      "personId": "DVG017",
+      "email": "dolores.vega@email.com",
+      "differential": {
+        "value": "chestPain",
+        "label": "Dolor de pecho"
+      },
+      "symptoms": [
+        {
+          "value": "beatsPerMinutesOverHundred",
+          "label": "Frecuencia cardíaca > 100bpm"
+        },
+        {
+          "value": "hemoptisis",
+          "label": "Hemoptisis"
+        }
+      ],
+      "diagnosis": [
+        {
+          "name": "Embolia Pulmonar Aguda",
+          "code": "EPA",
+          "diagnosis": 0.52,
+          "symptoms": [
+            {
+              "value": "beatsPerMinutesOverHundred",
+              "label": "Frecuencia cardíaca > 100bpm"
+            },
+            {
+              "value": "hemoptisis",
+              "label": "Hemoptisis"
+            }
+          ],
+          "differential": {
+            "value": "chestPain",
+            "label": "Dolor de pecho"
+          },
+          "severity": "MEDIUM"
+        }
+      ]
+    },
+    {
+      "firstName": "Enrique",
+      "lastName": "Navarro",
+      "age": 63,
+      "personId": "ENV018",
+      "email": "enrique.navarro@email.com",
+      "differential": {
+        "value": "chestPain",
+        "label": "Dolor de pecho"
+      },
+      "symptoms": [
+        {
+          "value": "diabetes",
+          "label": "Sufre diabetes"
+        },
+        {
+          "value": "historyOfHeartDisease",
+          "label": "Historial familiar de enfermedades cardiacas"
+        },
+        {
+          "value": "aspirinUsage",
+          "label": "Uso de aspirina en los últimos 7 días"
+        },
+        {
+          "value": "segmentSTChanges",
+          "label": "Desviación/Cambio en el segmento ST (>=0.05 mV)"
+        }
+      ],
+      "diagnosis": [
+        {
+          "name": "Infarto Agudo del Miocardio",
+          "code": "IAM",
+          "diagnosis": 0.81,
+          "symptoms": [
+            {
+              "value": "diabetes",
+              "label": "Sufre diabetes"
+            },
+            {
+              "value": "historyOfHeartDisease",
+              "label": "Historial familiar de enfermedades cardiacas"
+            },
+            {
+              "value": "segmentSTChanges",
+              "label": "Desviación/Cambio en el segmento ST (>=0.05 mV)"
+            }
+          ],
+          "differential": {
+            "value": "chestPain",
+            "label": "Dolor de pecho"
+          },
+          "severity": "HIGH"
+        }
+      ]
+    },
+    {
+      "firstName": "Inmaculada",
+      "lastName": "Torres",
+      "age": 47,
+      "personId": "ITR019",
+      "email": "inmaculada.torres@email.com",
+      "differential": {
+        "value": "chestPain",
+        "label": "Dolor de pecho"
+      },
+      "symptoms": [
+        {
+          "value": "previousTVPOrEp",
+          "label": "Historia previa de EP o TVP"
+        },
+        {
+          "value": "alternativeToEP",
+          "label": "Diagnóstico alternativo menos probable que la EP"
+        },
+        {
+          "value": "deepVeinThrombosis",
+          "label": "Signos clínicos de trombosis venosa profunda (TVP)"
+        }
+      ],
+      "diagnosis": [
+        {
+          "name": "Embolia Pulmonar Aguda",
+          "code": "EPA",
+          "diagnosis": 0.79,
+          "symptoms": [
+            {
+              "value": "previousTVPOrEp",
+              "label": "Historia previa de EP o TVP"
+            },
+            {
+              "value": "alternativeToEP",
+              "label": "Diagnóstico alternativo menos probable que la EP"
+            },
+            {
+              "value": "deepVeinThrombosis",
+              "label": "Signos clínicos de trombosis venosa profunda (TVP)"
+            }
+          ],
+          "differential": {
+            "value": "chestPain",
+            "label": "Dolor de pecho"
+          },
+          "severity": "HIGH"
+        }
+      ]
+    }
+]
