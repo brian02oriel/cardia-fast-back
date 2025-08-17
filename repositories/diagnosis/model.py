@@ -26,7 +26,7 @@ class DiagnosisFilters(BaseModel):
     email: list[str] | None = None
     search: str = ''
 
-class PatientDiagnosisModel(BaseModel):
+class PatientDiagnosisSummaryModel(BaseModel):
     id: str
     firstName: str
     lastName: str
@@ -35,7 +35,7 @@ class PatientDiagnosisModel(BaseModel):
     higherDiagnosis: PredictedDiagnosis
     mostFrequentSymptoms: Option
 
-class PatientDiagnosisResponse(BaseModel):
+class PatientDiagnosisSummaryResponse(BaseModel):
     personId: str
     firstName: str
     lastName: str
@@ -43,3 +43,14 @@ class PatientDiagnosisResponse(BaseModel):
     email: str
     differential: Option
     count: int
+
+class PatientDiagnosisResponse(BaseModel):
+    personId: str
+    firstName: str
+    lastName: str
+    age: int | None = None
+    email: str
+    differential: Option
+    diagnosis: list[PredictedDiagnosis]
+    symptoms: list[Option]
+

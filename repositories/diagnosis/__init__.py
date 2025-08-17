@@ -2,7 +2,7 @@ from fastapi import Depends
 
 from db.utils import DBUtils
 from factory.interfaces.DiagnosisInterface import Option
-from repositories.diagnosis.model import CreateDiagnosisModel, DiagnosisFilters, PatientDiagnosisResponse
+from repositories.diagnosis.model import CreateDiagnosisModel, DiagnosisFilters, DiagnosisResponse, PatientDiagnosisResponse, PatientDiagnosisSummaryResponse
 
 class DiagnosisRepository():
     def __init__(self):
@@ -14,7 +14,15 @@ class DiagnosisRepository():
         res = await collection.insert_one(data)
         return str(res.inserted_id)
     
-    async def get_diagnosis(self, filters: DiagnosisFilters | None = None)->list[PatientDiagnosisResponse]:
+    async def get_diagnosis(self, personId: str)->list[PatientDiagnosisResponse]:
+        db_utils = DBUtils()
+        collection = await db_utils.get_collection(db=self.db, collection_name='diagnosis')
+
+        res = await collection.find({'personId': personId})
+        res: list[PatientDiagnosisSummaryResponse] = [PatientDiagnosisSummaryResponse(**doc) async for doc in res]
+        return res
+    
+    async def get_diagnosis_summary(self, filters: DiagnosisFilters | None = None)->list[PatientDiagnosisSummaryResponse]:
         db_utils = DBUtils()
         collection = await db_utils.get_collection(db=self.db, collection_name='diagnosis_view')
         pipeline = []
@@ -33,8 +41,8 @@ class DiagnosisRepository():
                             { 'email': { '$regex': filters.search, '$options': 'i' }}
                         ]
                     }
-})
+        })
 
         res = await collection.aggregate(pipeline)
-        res: list[PatientDiagnosisResponse] = [PatientDiagnosisResponse(**doc) async for doc in res]
+        res: list[PatientDiagnosisSummaryResponse] = [PatientDiagnosisSummaryResponse(**doc) async for doc in res]
         return res

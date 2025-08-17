@@ -2,7 +2,7 @@ from factory.creators.EPAFactory import EPAFactory
 from factory.creators.IAMFactory import IAMFactory
 from factory.implementations.diagnosis import perform_diagnosis
 from repositories.diagnosis import DiagnosisRepository
-from repositories.diagnosis.model import CreateDiagnosisModel, DiagnosisBody, DiagnosisFilters, DiagnosisResponse, PatientDiagnosisResponse
+from repositories.diagnosis.model import CreateDiagnosisModel, DiagnosisBody, DiagnosisFilters, DiagnosisResponse, PatientDiagnosisResponse, PatientDiagnosisSummaryResponse
 
 
 class DiagnosisService:
@@ -27,9 +27,14 @@ class DiagnosisService:
         }
         return res
     
-    async def get_diagnosis(self, filters: DiagnosisFilters | None = None)-> list[PatientDiagnosisResponse]:
+    async def get_diagnosis(self, personId: str)-> list[PatientDiagnosisResponse]:
         repository = DiagnosisRepository()
-        res: DiagnosisResponse = await repository.get_diagnosis(filters=filters)
+        res: PatientDiagnosisResponse = await repository.get_diagnosis(personId=personId)
+        return res
+    
+    async def get_diagnosis_summary(self, filters: DiagnosisFilters | None = None)-> list[PatientDiagnosisSummaryResponse]:
+        repository = DiagnosisRepository()
+        res: DiagnosisResponse = await repository.get_diagnosis_summary(filters=filters)
         return res
 
 
