@@ -35,7 +35,7 @@ class PatientDiagnosisSummaryModel(BaseModel):
     higherDiagnosis: PredictedDiagnosis
     mostFrequentSymptoms: Option
 
-class PatientDiagnosisSummaryResponse(BaseModel):
+class PatientDiagnosisSummary(BaseModel):
     personId: str
     firstName: str
     lastName: str

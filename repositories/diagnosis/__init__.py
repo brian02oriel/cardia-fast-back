@@ -1,8 +1,8 @@
 from fastapi import Depends
-
+from pydantic import TypeAdapter
 from db.utils import DBUtils
 from factory.interfaces.DiagnosisInterface import Option
-from repositories.diagnosis.model import CreateDiagnosisModel, DiagnosisFilters, DiagnosisResponse, PatientDiagnosisResponse, PatientDiagnosisSummaryResponse
+from repositories.diagnosis.model import CreateDiagnosisModel, DiagnosisFilters, DiagnosisResponse, PatientDiagnosisResponse, PatientDiagnosisSummary
 
 class DiagnosisRepository():
     def __init__(self):
@@ -18,11 +18,10 @@ class DiagnosisRepository():
         db_utils = DBUtils()
         collection = await db_utils.get_collection(db=self.db, collection_name='diagnosis')
 
-        res = await collection.find({'personId': personId})
-        res: list[PatientDiagnosisSummaryResponse] = [PatientDiagnosisSummaryResponse(**doc) async for doc in res]
-        return res
+        res = collection.find({'personId': personId})
+        return [TypeAdapter(PatientDiagnosisResponse).validate_python(doc) for doc in await res.to_list(length=None)]
     
-    async def get_diagnosis_summary(self, filters: DiagnosisFilters | None = None)->list[PatientDiagnosisSummaryResponse]:
+    async def get_diagnosis_summary(self, filters: DiagnosisFilters | None = None)->list[PatientDiagnosisSummary]:
         db_utils = DBUtils()
         collection = await db_utils.get_collection(db=self.db, collection_name='diagnosis_view')
         pipeline = []
@@ -44,5 +43,5 @@ class DiagnosisRepository():
         })
 
         res = await collection.aggregate(pipeline)
-        res: list[PatientDiagnosisSummaryResponse] = [PatientDiagnosisSummaryResponse(**doc) async for doc in res]
+        res: list[PatientDiagnosisSummary] = [PatientDiagnosisSummary(**doc) async for doc in res]
         return res
