@@ -25,7 +25,7 @@ class Rules(BaseModel):
     percentage: float
 
 class Factors(BaseModel):
-    code: str
+    code: str | list[str]
     points: int
 
 class Diagnosis(ABC):

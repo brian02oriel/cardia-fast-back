@@ -1,3 +1,4 @@
+from factory.creators.DAFactory import DAFactory
 from factory.creators.EPAFactory import EPAFactory
 from factory.creators.IAMFactory import IAMFactory
 from factory.implementations.diagnosis import perform_diagnosis
@@ -11,9 +12,11 @@ class DiagnosisService:
     async def create_diagnosis(self, body: DiagnosisBody)-> DiagnosisResponse:
         iam_factory = IAMFactory()
         epa_factory = EPAFactory()
+        da_factory = DAFactory()
         diagnosis: list[dict] = [
             perform_diagnosis(factory=iam_factory, differential=body.differential, options=body.symptoms).model_dump(),
             perform_diagnosis(factory=epa_factory, differential=body.differential, options=body.symptoms).model_dump(),
+            perform_diagnosis(factory=da_factory, differential=body.differential, options=body.symptoms).model_dump(),
         ]
         data: CreateDiagnosisModel = {
             **body.model_dump(),
