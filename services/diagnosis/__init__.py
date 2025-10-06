@@ -4,7 +4,7 @@ from factory.creators.IAMFactory import IAMFactory
 from factory.implementations.diagnosis import perform_diagnosis
 from repositories.diagnosis import DiagnosisRepository
 from repositories.diagnosis.model import CreateDiagnosisModel, DiagnosisBody, DiagnosisFilters, DiagnosisResponse, PatientDiagnosisResponse, PatientDiagnosisSummary
-
+from datetime import datetime
 
 class DiagnosisService:
     def __init__(self):
@@ -18,12 +18,15 @@ class DiagnosisService:
             perform_diagnosis(factory=epa_factory, differential=body.differential, options=body.symptoms).model_dump(),
             perform_diagnosis(factory=da_factory, differential=body.differential, options=body.symptoms).model_dump(),
         ]
+        diagnosis.sort(key=lambda x: x['diagnosis'], reverse=True)
         data: CreateDiagnosisModel = {
             **body.model_dump(),
             'diagnosis': diagnosis,
+            'createdAt': datetime.now(),
         }
         repository = DiagnosisRepository()
         id: str = await repository.create_diagnosis(data=data)
+
         res: DiagnosisResponse = {
             'diagnosis': diagnosis,
             'id': id,

@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-
+from datetime import datetime
 from factory.interfaces.DiagnosisInterface import PredictedDiagnosis, Option
 
 class DiagnosisBody(BaseModel):
@@ -18,6 +18,7 @@ class DiagnosisResponse(BaseModel):
 
 class CreateDiagnosisModel(DiagnosisBody):
     diagnosis: list[PredictedDiagnosis]
+    createdAt: datetime | None = None
 
 class DiagnosisFilters(BaseModel):
     personId: list[str] | None = None
@@ -53,4 +54,5 @@ class PatientDiagnosisResponse(BaseModel):
     differential: Option
     diagnosis: list[PredictedDiagnosis]
     symptoms: list[Option]
+    createdAt: datetime
 
